@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hợp Đồng Cho Vay Tiền - Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</h1>
+        <h2>Độc lập – Tự do – Hạnh phúc</h2>
+        <h3>HỢP ĐỒNG CHO VAY TIỀN</h3>
+
+        <div id="contractContent"></div>
+
+        <button onclick="window.location.href='index.html';">Quay lại</button>
+    </div>
+
+    <script>
+        // Load the saved data from localStorage
+        const contractData = JSON.parse(localStorage.getItem('loanContract'));
+
+        if (contractData) {
+            // Dynamically build the contract content
+            const contentHtml = `
+                <p>Ngày: ${contractData.date}</p>
+                <p>Địa điểm: ${contractData.location}</p>
+                <h4>Bên A (bên cho vay)</h4>
+                <p>Ông (bà): ${contractData.lenderName}</p>
+                <p>CMND số: ${contractData.lenderId}, cấp bởi: ${contractData.lenderIssuedBy}, ngày cấp: ${contractData.lenderIssuedDate}</p>
+                <p>Địa chỉ: ${contractData.lenderAddress}</p>
+                <p>Điện thoại: ${contractData.lenderPhone}</p>
+
+                <h4>Bên B (bên vay)</h4>
+                <p>Ông (bà): ${contractData.borrowerName}</p>
+                <p>CMND số: ${contractData.borrowerId}, cấp bởi: ${contractData.borrowerIssuedBy}, ngày cấp: ${contractData.borrowerIssuedDate}</p>
+                <p>Địa chỉ: ${contractData.borrowerAddress}</p>
+                <p>Điện thoại: ${contractData.borrowerPhone}</p>
+
+                <h4>Điều 1: Về số lượng tiền vay</h4>
+                <p>Bằng số: ${contractData.loanAmountNumber}</p>
+                <p>Bằng chữ: ${contractData.loanAmountWords}</p>
+
+                <h4>Điều 2: Thời hạn và phương thức vay</h4>
+                <p>Thời hạn vay: ${contractData.loanDuration} tháng</p>
+                <p>Kể từ ngày: ${contractData.startDate} đến ngày: ${contractData.endDate}</p>
+
+                <h4>Phương thức vay:</h4>
+                <p>${contractData.paymentMethods.join(', ')}</p>
+
+                <h4>Điều 3: Lãi suất</h4>
+                <p>Lãi suất: ${contractData.interestRate}%</p>
+            `;
+
+            // Display the content in the contractContent div
+            document.getElementById('contractContent').innerHTML = contentHtml;
+        } else {
+            document.getElementById('contractContent').innerHTML = "<p>Không có dữ liệu hợp đồng được lưu.</p>";
+        }
+    </script>
+</body>
+</html>
