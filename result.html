@@ -85,6 +85,10 @@
             background-color: red;
             transform: scale(1.2);
         }
+        .progress-step.pending .step-icon {
+            background-color: orange;
+            transform: scale(1.2);
+        }
         .progress-step .step-text {
             margin-top: 10px;
             font-size: 14px;
@@ -96,6 +100,10 @@
         }
         .progress-step.unactive .step-text {
             color: red;
+            font-weight: bold;
+        }
+        .progress-step.pending .step-text {
+            color: orange;
             font-weight: bold;
         }
         .progress-step:before {
@@ -151,7 +159,7 @@
 
 <div class="container">
     <h2>Thông Tin Cá Nhân</h2>
-    <p>Họ và tên: Mai Van Lam</p>
+    <p>Họ và tên: Mai Xuan Lam</p>
     <p>Năm sinh: 2005</p>
 
     <h2>Thông Tin Chuyển Khoản</h2>
@@ -182,19 +190,70 @@
             <div class="step-text">Chờ Lấy Tiền</div>
 
         </div>
-        <div class="progress-step unactive" style="color: #ff0000;">
+        <div class="progress-step active" >
             <div class="step-icon">
                 <i class="fas fa-money-bill"></i>
             </div>
-            <div class="step-text">Đang chuyển</div>
+            <div class="step-text">Đang chuyển             <br>
+                <small style="color: red;">Tài khoản chưa xác thực định danh mức 2, vui lòng ra quầy xác thực !</small></div>
         </div>
-        <div class="progress-step unactive">
+        <div class="progress-step ">
             <div class="step-icon">
                 <i class="fas fa-star"></i>
             </div>
-            <div class="step-text">Đánh Giá<br><small>Vui lòng nâng hạn mức để chuyển</small></div>
+            <div class="step-text">Đánh Giá</div>
         </div>
     </div>
+    <div class="container">
+    <h2>Thông Tin Cá Nhân</h2>
+    <p>Họ và tên: Mai Xuan Lam</p>
+    <p>Năm sinh: 2005</p>
+    <p>Số CCCD: 049205011730</p>
+    <p>Số ĐT: 0904127332</p>
+    <p>Đại chỉ: Đại Thắng, Đại Lộc, Quảng Nam</p>
+    <p>Đại chỉ hiện tại:Mẹ nhu, Đà Nẵng</p>
+
+
+
+    <h2>Thông Tin Kiểm tra hồ sơ</h2>
+    <div class="info-box">
+        <P>Đang kiểm tra....</P>
+    </div>
+    <br>
+    <div class="progress-container">
+        <div class="progress-step pending">
+            <div class="step-icon">
+                <i class="fas fa-clipboard-list"></i>
+            </div>
+            <div class="step-text">Kiểm tra người dùng<br><small>Lịch kiểm tra vào ngày 23/09 tại địa chỉ Mẹ Nhu, Đà Nẵng</small></div>
+        </div>
+        <div class="progress-step">
+            <div class="step-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="step-text">Xác Nhận người dùng</div>
+        </div>
+        <div class="progress-step">
+            <div class="step-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <div class="step-text">Check nợ xấu</div>
+
+        </div>
+        <div class="progress-step ">
+            <div class="step-icon">
+                <i class="fas fa-receipt"></i>
+            </div>
+            <div class="step-text">In ticket</div>
+        </div>
+        <div class="progress-step">
+            <div class="step-icon">
+                <i class="fas fa-star"></i>
+            </div>
+            <div class="step-text">Đánh Giá</div>
+        </div>
+    </div>
+</div>
 </div>
 
 <script>
