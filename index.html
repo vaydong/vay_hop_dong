@@ -1,18 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expired Link</title>
+    <title>VayVND - Trạng thái thanh toán</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="loader"></div>
-        <div class="message" id="message">
-            Liên kết đã hết hạn/Trễ hạn do bạn vào trễ
+    <header>
+        <div class="logo">
+            <h1>VayVND</h1>
         </div>
-    </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Trang chủ</a></li>
+                <li><a href="#about">Về chúng tôi</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="payment-status">
+            <h2>Trạng thái thanh toán</h2>
+            <div class="progress-bar">
+                <div class="step processing">Đang xử lý</div>
+                <div class="step reviewing">Đang duyệt</div>
+                <div class="step failed">Xử lý </div>
+            </div>
+            <button id="startButton">Bắt đầu thanh toán</button>
+            <p id="statusMessage"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 VayVND. Mọi quyền được bảo lưu.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
