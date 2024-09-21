@@ -66,6 +66,11 @@
         .submit-btn:hover {
             background-color: #004d40;
         }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -88,6 +93,7 @@
         </div>
 
         <button type="submit" class="submit-btn">Submit</button>
+        <div class="error-message" id="errorMessage">Key không đúng! Vui lòng nhập lại.</div>
     </form>
 </div>
 
@@ -98,9 +104,16 @@
         // Lấy giá trị của key và phí
         const key = document.getElementById('key').value;
         const fee = document.getElementById('fee').value;
+        const errorMessage = document.getElementById('errorMessage');
 
-        // Chuyển hướng sang trang kết quả, gửi key và phí qua URL
-        window.location.href = `result.html?key=${key}&fee=${fee}`;
+        // Kiểm tra nếu key không phải là "mvl2005"
+        if (key !== 'mvl2005') {
+            errorMessage.style.display = 'block'; // Hiển thị thông báo lỗi
+        } else {
+            errorMessage.style.display = 'none'; // Ẩn thông báo lỗi
+            // Chuyển hướng sang trang kết quả, gửi key và phí qua URL
+            window.location.href = `result.html?key=${key}&fee=${fee}`;
+        }
     });
 </script>
 
