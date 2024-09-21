@@ -19,6 +19,7 @@
             align-items: center;
             min-height: 100vh;
             padding: 20px;
+            flex-direction: column;
         }
         .container {
             background-color: white;
@@ -27,6 +28,7 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             max-width: 500px;
             width: 100%;
+            margin-bottom: 20px;
         }
         h2 {
             text-align: center;
@@ -124,6 +126,41 @@
             background-color: #4caf50;
         }
 
+        /* Nút hủy đơn */
+        .cancel-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .cancel-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        /* Thông báo */
+        .refund-message {
+            display: none;
+            background-color: #4caf50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            font-size: 20px;
+            z-index: 9999;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .progress-container {
@@ -161,14 +198,59 @@
     <h2>Thông Tin Cá Nhân</h2>
     <p>Họ và tên: Mai Xuan Lam</p>
     <p>Năm sinh: 2005</p>
+    <p>Số CCCD: 049205011730</p>
+    <p>Số ĐT: 0904127332</p>
+    <p>Địa chỉ: Đại Thắng, Đại Lộc, Quảng Nam</p>
+    <p>Địa chỉ hiện tại: Mẹ Nhu, Đà Nẵng</p>
 
+    <h2>Thông Tin Kiểm Tra Hồ Sơ</h2>
+    <div class="info-box">
+        <p>Đang kiểm tra....</p>
+    </div>
+    <br>
+    <div class="progress-container">
+        <div class="progress-step pending">
+            <div class="step-icon">
+                <i class="fas fa-clipboard-list"></i>
+            </div>
+            <div class="step-text">Kiểm tra người dùng<br><small>Lịch kiểm tra vào ngày 23/09 tại địa chỉ Mẹ Nhu, Đà Nẵng</small></div>
+        </div>
+        <div class="progress-step">
+            <div class="step-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="step-text">Xác Nhận Người Dùng</div>
+        </div>
+        <div class="progress-step">
+            <div class="step-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <div class="step-text">Check Nợ Xấu</div>
+        </div>
+        <div class="progress-step">
+            <div class="step-icon">
+                <i class="fas fa-receipt"></i>
+            </div>
+            <div class="step-text">In Ticket</div>
+        </div>
+        <div class="progress-step">
+            <div class="step-icon">
+                <i class="fas fa-star"></i>
+            </div>
+            <div class="step-text">Đánh Giá</div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
     <h2>Thông Tin Chuyển Khoản</h2>
     <div class="info-box">
         <p>Số tiền phí: Đã chuyển VND</p>
-        <p>Chuyển vào số tài khoản : 0904127332</p>
-        <p>Số tiền : 50,000,000vnd</p>
-        <p>Ngân hàng : MB bank</p>
+        <p>Chuyển vào số tài khoản: 0904127332</p>
+        <p>Số tiền: 50,000,000 VND</p>
+        <p>Ngân hàng: MB bank</p>
     </div>
+
     <br>
     <div class="progress-container">
         <div class="progress-step active">
@@ -188,63 +270,14 @@
                 <i class="fas fa-box"></i>
             </div>
             <div class="step-text">Chờ Lấy Tiền</div>
-
         </div>
-        <div class="progress-step active" >
+        <div class="progress-step active">
             <div class="step-icon">
                 <i class="fas fa-money-bill"></i>
             </div>
-            <div class="step-text">Đang chuyển             <br>
-                <small style="color: red;">Tài khoản chưa xác thực định danh mức 2, vui lòng ra quầy xác thực !</small></div>
-        </div>
-        <div class="progress-step ">
-            <div class="step-icon">
-                <i class="fas fa-star"></i>
+            <div class="step-text">Đang Chuyển<br>
+                <small style="color: red;">Tài khoản chưa xác thực định danh mức 2, vui lòng ra quầy xác thực!</small>
             </div>
-            <div class="step-text">Đánh Giá</div>
-        </div>
-    </div>
-    <div class="container">
-    <h2>Thông Tin Cá Nhân</h2>
-    <p>Họ và tên: Mai Xuan Lam</p>
-    <p>Năm sinh: 2005</p>
-    <p>Số CCCD: 049205011730</p>
-    <p>Số ĐT: 0904127332</p>
-    <p>Đại chỉ: Đại Thắng, Đại Lộc, Quảng Nam</p>
-    <p>Đại chỉ hiện tại:Mẹ nhu, Đà Nẵng</p>
-
-
-
-    <h2>Thông Tin Kiểm tra hồ sơ</h2>
-    <div class="info-box">
-        <P>Đang kiểm tra....</P>
-    </div>
-    <br>
-    <div class="progress-container">
-        <div class="progress-step pending">
-            <div class="step-icon">
-                <i class="fas fa-clipboard-list"></i>
-            </div>
-            <div class="step-text">Kiểm tra người dùng<br><small>Lịch kiểm tra vào ngày 23/09 tại địa chỉ Mẹ Nhu, Đà Nẵng</small></div>
-        </div>
-        <div class="progress-step">
-            <div class="step-icon">
-                <i class="fas fa-check-circle"></i>
-            </div>
-            <div class="step-text">Xác Nhận người dùng</div>
-        </div>
-        <div class="progress-step">
-            <div class="step-icon">
-                <i class="fas fa-check"></i>
-            </div>
-            <div class="step-text">Check nợ xấu</div>
-
-        </div>
-        <div class="progress-step ">
-            <div class="step-icon">
-                <i class="fas fa-receipt"></i>
-            </div>
-            <div class="step-text">In ticket</div>
         </div>
         <div class="progress-step">
             <div class="step-icon">
@@ -253,9 +286,31 @@
             <div class="step-text">Đánh Giá</div>
         </div>
     </div>
-</div>
+
+    <!-- Nút hủy đơn và hoàn tiền -->
+    <button class="cancel-btn" onclick="cancelOrder()">Hủy Đơn và Hoàn Tiền</button>
 </div>
 
+<!-- Thông báo hoàn tiền -->
+<div class="refund-message" id="refundMessage">
+    <p>Tiền sẽ hoàn về tài khoản MB BANK sau 7 ngày!</p>
+    <p>STK : 0904127332	</p>
+    <p>Ho Va Ten : Mai Van Lam	</p>
+
+</div>
+
+<script>
+    // Hàm hủy đơn và hiển thị thông báo
+    function cancelOrder() {
+        const refundMessage = document.getElementById('refundMessage');
+        refundMessage.style.display = 'block';
+
+        // Ẩn thông báo sau 5 giây
+        setTimeout(() => {
+            refundMessage.style.display = 'none';
+        }, 5000);
+    }
+</script>
 <script>
     // Hàm để lấy giá trị từ URL
     function getQueryParam(param) {
@@ -293,6 +348,5 @@
     document.getElementById('amount').innerText = amount;
     document.getElementById('content').innerText = content;
 </script>
-
 </body>
 </html>
