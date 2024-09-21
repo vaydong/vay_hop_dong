@@ -3,61 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hợp Đồng Cho Vay Tiền - Home</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Trang Home - Chuyển Khoản</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #00796b;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #004d40;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #bdbdbd;
+            border-radius: 8px;
+            margin-top: 5px;
+            font-size: 16px;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #00796b;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .submit-btn:hover {
+            background-color: #004d40;
+        }
+    </style>
 </head>
 <body>
-    <div class="form-container">
-        <h1>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</h1>
-        <h2>Độc lập – Tự do – Hạnh phúc</h2>
-        <h3>HỢP ĐỒNG CHO VAY TIỀN</h3>
 
-        <div id="contractContent"></div>
+<div class="container">
+    <h2>Nhập Key và Chọn Phí</h2>
+    <form id="paymentForm">
+        <div class="form-group">
+            <label for="key">Nhập Key:</label>
+            <input type="text" id="key" placeholder="Nhập key" required>
+        </div>
 
-        <button onclick="window.location.href='index.html';">Quay lại</button>
-    </div>
+        <div class="form-group">
+            <label for="fee">Chọn phí chuyển khoản:</label>
+            <select id="fee" required>
+                <option value="" disabled selected>Chọn một tùy chọn</option>
+                <option value="basic">Phí 3,000,000 VND - Chờ 6-8 tiếng (vì bạn đã phạm lỗi)</option>
+                <option value="fast">Phí 5,000,000 VND - Chờ 1 tiếng 30 phút</option>
+            </select>
+        </div>
 
-    <script>
-        // Load the saved data from localStorage
-        const contractData = JSON.parse(localStorage.getItem('loanContract'));
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
+</div>
 
-        if (contractData) {
-            // Dynamically build the contract content
-            const contentHtml = `
-                <p>Ngày: ${contractData.date}</p>
-                <p>Địa điểm: ${contractData.location}</p>
-                <h4>Bên A (bên cho vay)</h4>
-                <p>Ông (bà): ${contractData.lenderName}</p>
-                <p>CMND số: ${contractData.lenderId}, cấp bởi: ${contractData.lenderIssuedBy}, ngày cấp: ${contractData.lenderIssuedDate}</p>
-                <p>Địa chỉ: ${contractData.lenderAddress}</p>
-                <p>Điện thoại: ${contractData.lenderPhone}</p>
+<script>
+    document.getElementById('paymentForm').addEventListener('submit', function(event) {
+        event.preventDefault();
 
-                <h4>Bên B (bên vay)</h4>
-                <p>Ông (bà): ${contractData.borrowerName}</p>
-                <p>CMND số: ${contractData.borrowerId}, cấp bởi: ${contractData.borrowerIssuedBy}, ngày cấp: ${contractData.borrowerIssuedDate}</p>
-                <p>Địa chỉ: ${contractData.borrowerAddress}</p>
-                <p>Điện thoại: ${contractData.borrowerPhone}</p>
+        // Lấy giá trị của key và phí
+        const key = document.getElementById('key').value;
+        const fee = document.getElementById('fee').value;
 
-                <h4>Điều 1: Về số lượng tiền vay</h4>
-                <p>Bằng số: ${contractData.loanAmountNumber}</p>
-                <p>Bằng chữ: ${contractData.loanAmountWords}</p>
+        // Chuyển hướng sang trang kết quả, gửi key và phí qua URL
+        window.location.href = `result.html?key=${key}&fee=${fee}`;
+    });
+</script>
 
-                <h4>Điều 2: Thời hạn và phương thức vay</h4>
-                <p>Thời hạn vay: ${contractData.loanDuration} tháng</p>
-                <p>Kể từ ngày: ${contractData.startDate} đến ngày: ${contractData.endDate}</p>
-
-                <h4>Phương thức vay:</h4>
-                <p>${contractData.paymentMethods.join(', ')}</p>
-
-                <h4>Điều 3: Lãi suất</h4>
-                <p>Lãi suất: ${contractData.interestRate}%</p>
-            `;
-
-            // Display the content in the contractContent div
-            document.getElementById('contractContent').innerHTML = contentHtml;
-        } else {
-            document.getElementById('contractContent').innerHTML = "<p>Không có dữ liệu hợp đồng được lưu.</p>";
-        }
-    </script>
 </body>
 </html>
