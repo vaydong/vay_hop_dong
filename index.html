@@ -3,40 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VayVND - Trạng thái thanh toán</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Hợp Đồng Cho Vay Tiền</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e0f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .form-container {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 900px;
+            width: 100%;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #00796b;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #004d40;
+        }
+        .form-group input, 
+        .form-group textarea, 
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #bdbdbd;
+            border-radius: 8px;
+            margin-top: 5px;
+            font-size: 16px;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #00796b;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .submit-btn:hover {
+            background-color: #004d40;
+        }
+        .responsive-inputs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .responsive-inputs .form-group {
+            flex: 1;
+            min-width: 250px;
+        }
+        .form-notice {
+            background-color: #e0f7fa;
+            color: #00796b;
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 20px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <h1>VayVND</h1>
+
+<div class="form-container">
+    <h2>Hợp Đồng Cho Vay Tiền</h2>
+    <form id="loanForm">
+        <div class="form-group">
+            <label for="date">Ngày ký hợp đồng:</label>
+            <input type="date" id="date" required>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#home">Trang chủ</a></li>
-                <li><a href="#about">Về chúng tôi</a></li>
-                <li><a href="#contact">Liên hệ</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section class="payment-status">
-            <h2>Trạng thái thanh toán</h2>
-            <div class="progress-bar">
-                <div class="step processing">Đang xử lý</div>
-                <div class="step reviewing">Đang duyệt</div>
-                <div class="step failed">Xử lý </div>
+        <div class="form-group">
+            <label for="location">Địa điểm:</label>
+            <input type="text" id="location" placeholder="Nhập địa điểm" required>
+        </div>
+        <h3>Bên A: (Bên cho vay)</h3>
+        <div class="responsive-inputs">
+            <div class="form-group">
+                <label for="a-name">Tên:</label>
+                <input type="text" id="a-name" placeholder="Ông/Bà" required>
             </div>
-            <button id="startButton">Bắt đầu thanh toán</button>
-            <p id="statusMessage"></p>
-        </section>
-    </main>
+            <div class="form-group">
+                <label for="a-id">CMND Số:</label>
+                <input type="text" id="a-id" placeholder="Số CMND" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="a-address">Địa chỉ:</label>
+            <input type="text" id="a-address" placeholder="Nhập địa chỉ" required>
+        </div>
+        <div class="form-group">
+            <label for="a-phone">Điện thoại:</label>
+            <input type="text" id="a-phone" placeholder="Số điện thoại" required>
+        </div>
 
-    <footer>
-        <p>&copy; 2024 VayVND. Mọi quyền được bảo lưu.</p>
-    </footer>
+        <h3>Bên B: (Bên vay)</h3>
+        <div class="responsive-inputs">
+            <div class="form-group">
+                <label for="b-name">Tên:</label>
+                <input type="text" id="b-name" placeholder="Ông/Bà" required>
+            </div>
+            <div class="form-group">
+                <label for="b-id">CMND Số:</label>
+                <input type="text" id="b-id" placeholder="Số CMND" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="b-address">Địa chỉ:</label>
+            <input type="text" id="b-address" placeholder="Nhập địa chỉ" required>
+        </div>
+        <div class="form-group">
+            <label for="b-phone">Điện thoại:</label>
+            <input type="text" id="b-phone" placeholder="Số điện thoại" required>
+        </div>
 
-    <script src="script.js"></script>
+        <h3>Điều 1: Về số lượng tiền vay</h3>
+        <div class="form-group">
+            <label for="amount-number">Số tiền (bằng số):</label>
+            <input type="number" id="amount-number" placeholder="Nhập số tiền" required>
+        </div>
+        <div class="form-group">
+            <label for="amount-text">Số tiền (bằng chữ):</label>
+            <input type="text" id="amount-text" placeholder="Nhập số tiền bằng chữ" required>
+        </div>
+
+        <h3>Điều 2: Thời hạn và phương thức vay</h3>
+        <div class="form-group">
+            <label for="loan-duration">Thời hạn vay (tháng):</label>
+            <input type="number" id="loan-duration" placeholder="Số tháng" required>
+        </div>
+        <div class="form-group">
+            <label for="start-date">Ngày bắt đầu:</label>
+            <input type="date" id="start-date" required>
+        </div>
+        <div class="form-group">
+            <label for="end-date">Ngày kết thúc:</label>
+            <input type="date" id="end-date" required>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit</button>
+
+        <div id="form-notice" class="form-notice">
+            Form submitted successfully! Your key is: <strong>mvl2005</strong>
+        </div>
+    </form>
+</div>
+
+<script>
+    document.getElementById('loanForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        document.getElementById('form-notice').style.display = 'block';
+    });
+</script>
+
 </body>
 </html>
