@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kết Quả Chuyển Khoản</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" />
     <style>
         * {
             box-sizing: border-box;
@@ -47,21 +48,143 @@
             color: #00796b;
             font-size: 18px;
         }
+        .progress-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1000px;
+            padding: 20px;
+            position: relative;
+        }
+        .progress-step {
+            text-align: center;
+            flex: 1;
+            position: relative;
+        }
+        .progress-step .step-icon {
+            font-size: 30px;
+            background-color: #ddd;
+            color: white;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            transition: background-color 0.4s ease, transform 0.4s ease;
+        }
+        .progress-step.active .step-icon {
+            background-color: #4caf50;
+            transform: scale(1.2);
+        }
+        .progress-step .step-text {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+        .progress-step.active .step-text {
+            color: #4caf50;
+            font-weight: bold;
+        }
+        .progress-step:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: 4px;
+            width: 100%;
+            background-color: #ddd;
+            z-index: -1;
+            transform: translateX(-50%);
+        }
+        .progress-step:first-child:before {
+            display: none;
+        }
+        .progress-step.active ~ .progress-step:before {
+            background-color: #4caf50;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .progress-container {
+                flex-direction: column;
+                padding: 0;
+            }
+            .progress-step {
+                margin-bottom: 20px;
+                text-align: center;
+            }
+            .progress-step .step-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+            .progress-step:before {
+                content: '';
+                position: absolute;
+                top: 30px;
+                left: 50%;
+                width: 60px;
+                height: 4px;
+                background-color: #ddd;
+                transform: translateX(-50%);
+            }
+            .progress-step:first-child:before {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h2>Thông Tin Cá Nhân</h2>
-    <p>Họ và tên: Mai Xuan Lam</p>
+    <p>Họ và tên: Mai Van Lam</p>
     <p>Năm sinh: 2005</p>
 
     <h2>Thông Tin Chuyển Khoản</h2>
     <div class="info-box">
-        <p>Số tiền: <span id="amount"></span> VND</p>
-        <p>Nội dung chuyển khoản: <span id="content"></span></p>
-        <p>Số tài khoản: 111420202005</p>
-        <p>Ngân hàng: MB BANK</p>
+        <p>Số tiền phí: Đã chuyển VND</p>
+        <p>Chuyển vào số tài khoản : 0904127332</p>
+        <p>Số tiền : 50,000,000vnd</p>
+        <p>Ngân hàng : MB bank</p>
+    </div>
+    <br>
+    <div class="progress-container">
+        <div class="progress-step active">
+            <div class="step-icon">
+                <i class="fas fa-clipboard-list"></i>
+            </div>
+            <div class="step-text">Đơn Hàng Đã Đặt<br><small>21/09/2024</small></div>
+        </div>
+        <div class="progress-step active">
+            <div class="step-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="step-text">Xác Nhận Thanh Toán</div>
+        </div>
+        <div class="progress-step active">
+            <div class="step-icon">
+                <i class="fas fa-box"></i>
+            </div>
+            <div class="step-text">Chờ Lấy Tiền</div>
+        </div>
+        <div class="progress-step">
+            <div class="step-icon">
+                <i class="fas fa-money-bill"></i>
+            </div>
+            <div class="step-text">Đang chuyển</div>
+        </div>
+        <div class="progress-step">
+            <div class="step-icon">
+                <i class="fas fa-star"></i>
+            </div>
+            <div class="step-text">Đánh Giá</div>
+        </div>
     </div>
 </div>
 
