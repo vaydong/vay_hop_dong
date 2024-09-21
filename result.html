@@ -81,6 +81,10 @@
             background-color: #4caf50;
             transform: scale(1.2);
         }
+        .progress-step.unactive .step-icon {
+            background-color: red;
+            transform: scale(1.2);
+        }
         .progress-step .step-text {
             margin-top: 10px;
             font-size: 14px;
@@ -88,6 +92,10 @@
         }
         .progress-step.active .step-text {
             color: #4caf50;
+            font-weight: bold;
+        }
+        .progress-step.unactive .step-text {
+            color: red;
             font-weight: bold;
         }
         .progress-step:before {
@@ -171,20 +179,20 @@
             <div class="step-icon">
                 <i class="fas fa-box"></i>
             </div>
-            <div class="step-text">Chờ Lấy Tiền<br><small>17:00</small><small>Khả năng trễ hơn dự kiến 21:00</small></div>
+            <div class="step-text">Chờ Lấy Tiền</div>
 
         </div>
-        <div class="progress-step">
+        <div class="progress-step unactive" style="color: #ff0000;">
             <div class="step-icon">
                 <i class="fas fa-money-bill"></i>
             </div>
             <div class="step-text">Đang chuyển</div>
         </div>
-        <div class="progress-step">
+        <div class="progress-step unactive">
             <div class="step-icon">
                 <i class="fas fa-star"></i>
             </div>
-            <div class="step-text">Đánh Giá</div>
+            <div class="step-text">Đánh Giá<br><small>Vui lòng nâng hạn mức để chuyển</small></div>
         </div>
     </div>
 </div>
