@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết Quả Chuyển Khoản</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #00796b;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+        p {
+            font-size: 18px;
+            color: #004d40;
+            margin-bottom: 10px;
+        }
+        .info-box {
+            margin-top: 20px;
+            background-color: #e0f7fa;
+            padding: 15px;
+            border-radius: 8px;
+            color: #00796b;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Thông Tin Cá Nhân</h2>
+    <p>Họ và tên: Mai Van Lam</p>
+    <p>Năm sinh: 2005</p>
+
+    <h2>Thông Tin Chuyển Khoản</h2>
+    <div class="info-box">
+        <p>Số tiền: <span id="amount"></span> VND</p>
+        <p>Nội dung chuyển khoản: <span id="content"></span></p>
+        <p>Số tài khoản: 111420202005</p>
+        <p>Ngân hàng: MB BANK</p>
+    </div>
+</div>
+
+<script>
+    // Hàm để lấy giá trị từ URL
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    // Hàm random 4 ký tự bao gồm số và chữ cái
+    function randomString(length) {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+        const charactersLength = characters.length;
+        for (let i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    }
+
+    // Lấy giá trị của key và phí từ URL
+    const fee = getQueryParam('fee');
+
+    // Thiết lập số tiền và nội dung chuyển khoản dựa trên phí
+    let amount = '';
+    let content = '';
+
+    if (fee === 'basic') {
+        amount = '3,000,000';
+        content = randomString(4) + 'basic';
+    } else if (fee === 'fast') {
+        amount = '5,000,000';
+        content = randomString(4) + 'nhanh';
+    }
+
+    // Hiển thị thông tin trên trang
+    document.getElementById('amount').innerText = amount;
+    document.getElementById('content').innerText = content;
+</script>
+
+</body>
+</html>
