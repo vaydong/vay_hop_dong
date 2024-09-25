@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f5ff;
+            color: #333;
+            padding: 20px; /* Add padding to allow spacing on smaller screens */
+        }
+
+        /* Loading Spinner */
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #007bff;
+            width: 100px;
+            height: 100px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 20px;
+            margin-top: 20px;
+            color: #007bff;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #loader-section {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #form-section {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease-in-out;
+            width: 100%; /* Make it responsive */
+            max-width: 400px; /* Control the width on larger screens */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #007bff;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        form label {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        form input {
+            padding: 12px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 26px;
+            transition: border-color 0.3s;
+            width: 95%; /* Make the inputs full width */
+        }
+
+        form input:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        form button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 26px;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        #spinner {
+            display: none;
+            margin-left: 10px;
+        }
+
+        .result-box {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: opacity 0.3s ease;
+            width: 95%; /* Make the result box full width */
+        }
+
+        .result-box p {
+            margin: 10px 0;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+
+        .status-red {
+            color: red;
+            font-weight: bold;
+        }
+
+        .status-green {
+            color: greenyellow;
+            font-weight: bold;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            #form-section {
+                padding: 15px;
+                width: 100%; /* Ensure the form section is responsive */
+            }
+
+            form input, .result-box {
+                font-size: 14px; /* Adjust font size for smaller screens */
+            }
+
+            .loader {
+                width: 80px;
+                height: 80px;
+                border-width: 12px;
+            }
+
+            .loading-text {
+                font-size: 18px;
+            }
+        }
+
+        /* Logo Style */
+        .logo {
+            width: 100px;
+            margin-bottom: 15px;
+        }
+
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loader-section">
+        <div class="loader"></div>
+        <div class="loading-text">Đang tải dữ liệu...</div>
+    </div>
+
+    <div id="form-section">
+        <!-- Add a logo here -->
+        <img class="logo" src="https://cdn.prod.website-files.com/6107d6546b656bffc909cd26/61c0d1264935ee173ea20df9_Jeff-logo-blue.svg" alt="Logo">
+
+        <h2>Nhập thông tin của bạn</h2>
+        <form id="user-form">
+            <label for="citizenId">Số căn cước công dân <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Stylized_Vietnamese_Citizen_Identity_Card_sample.jpg/640px-Stylized_Vietnamese_Citizen_Identity_Card_sample.jpg" width="20" alt="ID Icon"></label>
+            <input type="text" id="citizenId" name="citizenId" placeholder="Nhập số căn cước..." required>
+
+            <label for="phoneNumber">Số điện thoại <img src="https://cdn.shopify.com/app-store/listing_images/d99ffbae810f9027baa51162058568f8/icon/CIOW-d_0lu8CEAE=.png" width="20" alt="Phone Icon"></label>
+            <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Nhập số điện thoại..." required>
+
+            <button type="submit" id="submitButton">
+                <span id="buttonText">Xác nhận</span>
+                <img id="spinner" src="https://cdn-icons-png.flaticon.com/512/189/189792.png" width="20" alt="Loading Spinner">
+            </button>
+        </form>
+
+        <div id="result" class="result-box"></div>
+    </div>
+
+    <script>
+        // Show form after 3 seconds of loading
+        setTimeout(() => {
+            document.getElementById('loader-section').style.display = 'none';
+            document.getElementById('form-section').style.display = 'flex';
+        }, 3000);
+
+        const form = document.getElementById('user-form');
+        const result = document.getElementById('result');
+        const submitButton = document.getElementById('submitButton');
+        const buttonText = document.getElementById('buttonText');
+        const spinner = document.getElementById('spinner');
+
+        function isValidCitizenId(id) {
+            return /^[0-9]{12}$/.test(id);  // Checks for exactly 12 digits
+        }
+
+        function isValidPhoneNumber(number) {
+            return /^[0-9]{10}$/.test(number);  // Checks for exactly 10 digits
+        }
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const citizenId = document.getElementById('citizenId').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+
+            // Clear previous result
+            result.innerHTML = '';
+            result.style.display = 'none';
+
+            // Show loading spinner
+            buttonText.style.display = 'none';
+            spinner.style.display = 'inline-block';
+
+            setTimeout(() => {
+                // Hide loading spinner
+                buttonText.style.display = 'inline';
+                spinner.style.display = 'none';
+
+                // Validate inputs
+                if (!isValidCitizenId(citizenId)) {
+                    result.innerHTML = `<p class="error"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828665.png" alt="Error" width="20"> Số căn cước không hợp lệ</p>`;
+                    result.style.display = 'block';
+                    return;
+                }
+
+                if (!isValidPhoneNumber(phoneNumber)) {
+                    result.innerHTML = `<p class="error"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828665.png" alt="Error" width="20"> Số điện thoại không hợp lệ</p>`;
+                    result.style.display = 'block';
+                    return;
+                }
+
+                // Check if inputs match the correct values
+                if (citizenId === '049205011730' && phoneNumber === '0904127332') {
+                    result.innerHTML = `
+                        <p class="success"><img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Success" width="20"> Dữ liệu tìm thấy!</p>
+                        <p><strong>Họ và tên:</strong> Mai Xuan Lam</p>
+                        <p><strong>Sinh năm:</strong> 12/09/2005</p>
+                        <p><strong>Số tiền đang vay:</strong> 50.000.000 VND</p>
+                        <p><strong>Trạng thái:</strong> <span class="status-red">Sắp hủy đơn</span></p>
+                        <p><strong>Cuộc gọi nhỡ:</strong> <span class="status-red">2</span></p>
+                        <p><strong>Phí tiếp tục duy trì:</strong> <span class="status-green">40% tiền phí đã đóng</span></p>
+                        <p><strong>Thời gian về tiền sớm nhất:</strong> <span class="status-red">Đóng tiền và sẽ có cuộc gọi xác nhận trong vòng 15 ngày kể từ ngày 23/09/2024<br><small>Nếu không tiền này sẽ bị hủy và sẽ vào ngân sách hỗ trợ trẻ em</small></span></p>
+                    `;
+                    result.style.display = 'block';
+                } else {
+                    result.innerHTML = `<p class="error"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828665.png" alt="Error" width="20"> Không có dữ liệu</p>`;
+                    result.style.display = 'block';
+                }
+            }, 1500); // Simulate delay
+        });
+    </script>
+</body>
+</html>

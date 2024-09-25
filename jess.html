@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Interface</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f5ff;
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .loan-offer {
+            display: flex;
+            flex-direction: row;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 1100px;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .offer-details {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        .offer-details img {
+            width: 300px;
+            height: auto;
+        }
+
+        .offer-details h1 {
+            font-size: 28px;
+            margin: 20px 0;
+            color: #007bff;
+        }
+
+        .offer-details ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .offer-details ul li {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        .offer-details ul li img {
+            margin-right: 10px;
+            width: 24px;
+            height: 24px;
+        }
+
+        .loan-calculator {
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            /* Ensure the form takes full width */
+        }
+
+        .loan-calculator label {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .loan-calculator input[type="range"] {
+            width: 100%;
+        }
+
+        .loan-calculator .amount-display,
+        .loan-calculator .duration-display {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .loan-calculator select {
+            padding: 8px;
+            margin: 10px 0;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .loan-calculator button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .loan-calculator button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .loan-calculator .error-message {
+            color: red;
+            margin-top: 10px;
+            display: none;
+            /* Hidden by default */
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            background-color: #f9f9f9;
+            padding: 30px 20px;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .partners {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .partners img {
+            width: 120px;
+            height: auto;
+            margin: 10px;
+            max-width: 100%;
+        }
+
+        .footer-social {
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            margin: 0 10px;
+        }
+
+        .footer-social img {
+            width: 24px;
+            height: 24px;
+            filter: grayscale(100%);
+            transition: filter 0.3s;
+        }
+
+        .footer-social img:hover {
+            filter: none;
+        }
+
+        .footer-description {
+            margin: 20px 0;
+            text-align: center;
+            max-width: 800px;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .loan-offer {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .offer-details img {
+                width: 100%;
+            }
+
+            .loan-calculator {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo"><img class="logo"
+                src="https://cdn.prod.website-files.com/6107d6546b656bffc909cd26/61c0d1264935ee173ea20df9_Jeff-logo-blue.svg"
+                alt="Jeff Logo"></div>
+    </header>
+    <main>
+        <section class="loan-offer">
+            <div class="offer-details">
+                <img src="https://cdn.prod.website-files.com/6107d6546b656b27d809cd54/6522b7bf2cc3d6ebe886949b_6522b7972aec641b8d2866b6_loan-ads.webp"
+                    alt="Loan Promotion">
+                <h1>Vay lần đầu nhận ngay lãi suất 0%</h1>
+                <ul>
+                    <li><img src="https://cdn.prod.website-files.com/6107d6546b656bffc909cd26/6107d6546b656b7a9d09cd7a_check.svg" alt="Partner Icon"> Hơn 25
+                        đối tác</li>
+                    <li><img src="https://cdn.prod.website-files.com/6107d6546b656bffc909cd26/6107d6546b656b7a9d09cd7a_check.svg" alt="Fee Icon"> Không mất phí
+                    </li>
+                    <li><img src="https://cdn.prod.website-files.com/6107d6546b656bffc909cd26/6107d6546b656b7a9d09cd7a_check.svg" alt="Simplicity Icon"> Đơn
+                        giản</li>
+                    <li><img src="https://cdn.prod.website-files.com/6107d6546b656bffc909cd26/6107d6546b656b7a9d09cd7a_check.svg" alt="Online Icon"> 100%
+                        Online</li>
+                </ul>
+            </div>
+            <div class="loan-calculator">
+                <form id="loanForm" action="find.html" method="get">
+                    <label for="amount">Số tiền vay:</label>
+                    <input type="range" id="amount" name="amount" min="1000000" max="20000000" step="1000000"
+                        value="3000000">
+                    <div class="amount-display" id="amountDisplay">3.000.000 VND</div>
+
+                    <label for="duration">Thời hạn cho vay:</label>
+                    <input type="range" id="duration" name="duration" min="1" max="12" value="3">
+                    <div class="duration-display" id="durationDisplay">3 tháng</div>
+
+                    <label for="purpose">Mục đích vay:</label>
+                    <select id="purpose" name="purpose" required>
+                        <option value="" disabled selected>Vui lòng chọn</option>
+                        <option value="personal">Personal</option>
+                        <option value="business">Business</option>
+                    </select>
+
+                    <button type="submit">Nhận tiền ngay</button>
+                    <div class="error-message" id="errorMessage">Vui lòng chọn mục đích vay trước khi gửi.</div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Chúng tôi chỉ hợp tác với các đối tác tài chính tốt nhất tại Việt Nam.</p>
+        <div class="partners">
+            <img src="https://cdn.prod.website-files.com/6107d6546b656bffc909cd26/65244667f9ed19d52964c38e_logo_1645778839158.webp"
+                alt="HDBank Logo">
+            <img src="https://cdn.prod.website-files.com/6107d6546b656bffc909cd26/6524479b9c18b5e6ad2bd46d_download%20(8).webp"
+                alt="VIB Logo">
+            <img src="https://cdn.prod.website-files.com/6107d6546b656bffc909cd26/652446fa80807cbd9f4831a7_Logo_TPBank.svg"
+                alt="TPBank Logo">
+            <img src="https://cdn.prod.website-files.com/6107d6546b656bffc909cd26/65244748a353a877a56c7758_TrueMoney-logo.png"
+                alt="TrueMoney Logo">
+            <img src="https://cdn.prod.website-files.com/6107d6546b656bffc909cd26/625879fcf6c684929927dfca_Group%20746.svg"
+                alt="Mirae Asset Logo">
+            <img src="https://cdn.prod.website-files.com/6107d6546b656bffc909cd26/63e0ebd3ea7c876e6b15dd49_132838575177542222_b099aacca88b62d53b9a%20(1).webp"
+                alt="MCredit Logo">
+        </div>
+        <div class="footer-description">
+            <p>Jeff không phải đơn vị cung cấp cho vay và không phát hành các khoản vay. Dịch vụ của Jeff giúp đánh giá
+                các đối tác vay uy tín với các sản phẩm tài chính đa dạng, thời gian trả nợ linh hoạt từ 91 đến 180
+                ngày, với lãi suất APR tối thiểu là 0% và tối đa là 20%.</p>
+            <p>Jeff không thu bất kỳ khoản phí nào liên quan đến việc xem xét khoản vay hoặc phí thẩm định. Tất cả các
+                sản phẩm và giải pháp có sẵn mà khách hàng có thể mua qua Jeff không liên quan đến các sản phẩm vay, mà
+                là các khoản phí liên quan đến việc trình bày dữ liệu và đánh giá khách hàng. Việc sử dụng các dịch vụ
+                này là hoàn toàn tùy chọn và không ảnh hưởng đến quyết định phê duyệt khoản vay cuối cùng của khách hàng
+                với bất kỳ đối tác tài chính nào được chọn.</p>
+            <p>Việc mua bất kỳ dịch vụ nào do Jeff cung cấp đều yêu cầu sự đồng ý rõ ràng của khách hàng. Người dùng sẽ
+                nhận được thông tin đầy đủ và chính xác về APR, cũng như tất cả các khoản phí trước khi ký hợp đồng vay.
+            </p>
+            <p><strong>Ví dụ:</strong> Khoản vay 6.000.000 đồng, thời gian trả góp: 6 tháng (180 ngày), phí tư vấn:
+                600.000 đồng, phí dịch vụ: 1.360.000 đồng, lãi suất (18.3%/năm): 540.000 đồng. Tổng số tiền phải trả:
+                8.500.000 đồng.</p>
+            <p><strong>Bản quyền © Jeff.</strong> Đơn vị chủ quản: Jeff Estonia OU. Địa chỉ: F. R. Kreutzwaldi tn 43b,
+                65610 Võru linn, Võru maakond. Số điện thoại: +84 9018 157 66. Email: <a
+                    href="mailto:info@jeff.vn">info@jeff.vn</a>. Mã số doanh nghiệp: 16372962.</p>
+        </div>
+        <div class="footer-social">
+            <a href="#"><img
+                    src="https://cdn.prod.website-files.com/6107d6546b656bffc909cd26/624dd0dbb706f89afc7b6ea0_fb.svg"
+                    alt="Facebook"></a>
+            <a href="#"><img
+                    src="https://cdn.prod.website-files.com/6107d6546b656bffc909cd26/66152e05a876676053e240c7_118293_instagram_512x512.png"
+                    alt="Instagram"></a>
+            <a href="#"><img
+                    src="https://cdn.prod.website-files.com/6107d6546b656bffc909cd26/624dd0db681f4101c2e9eac8_in.svg"
+                    alt="LinkedIn"></a>
+            <a href="#"><img
+                    src="https://cdn.prod.website-files.com/6107d6546b656bffc909cd26/624dd0db68b1d40bf15c8fa5_you.svg"
+                    alt="YouTube"></a>
+        </div>
+        <p>Bản quyền © Jeff. Đơn vị chủ quản: Jeff Estonia OU.</p>
+    </footer>
+
+    <script>
+        const amountSlider = document.getElementById('amount');
+        const amountDisplay = document.getElementById('amountDisplay');
+        const durationSlider = document.getElementById('duration');
+        const durationDisplay = document.getElementById('durationDisplay');
+        const loanForm = document.getElementById('loanForm');
+        const errorMessage = document.getElementById('errorMessage');
+        const purposeSelect = document.getElementById('purpose');
+
+        // Update the amount display when the slider is moved
+        amountSlider.addEventListener('input', function () {
+            const formattedAmount = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(this.value);
+            amountDisplay.textContent = formattedAmount;
+        });
+
+        // Update the duration display when the slider is moved
+        durationSlider.addEventListener('input', function () {
+            durationDisplay.textContent = this.value + ' tháng';
+        });
+
+        // Form validation for purpose selection
+        loanForm.addEventListener('submit', function (event) {
+            if (!purposeSelect.value) {
+                errorMessage.style.display = 'block';
+                event.preventDefault();
+            } else {
+                errorMessage.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
